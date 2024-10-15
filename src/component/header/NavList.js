@@ -19,7 +19,7 @@ export default function NavList() {
         </li>
         <li>
           <div className="pr-8">
-            <WishList></WishList>
+          <Link to="/wishlist"><WishList></WishList></Link>  
           </div>
         </li>
       </ul>
