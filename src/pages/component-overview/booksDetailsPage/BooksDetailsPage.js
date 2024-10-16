@@ -15,7 +15,7 @@ export default function BooksDetailsPage() {
   } = data;
   console.log(data);
   return (
-    <div className="mt-24">
+    <div className="my-24">
       <div className="container">
         <div className="grid grid-cols-5 gap-8">
           <div>

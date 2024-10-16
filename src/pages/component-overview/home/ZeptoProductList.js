@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import WishList from "../../../component/svg/WishList";
 
 export default function ZeptoProductList({ dataList }) {
-  console.log(dataList);
+  // console.log(dataList);
   const { title, authors, formats, id } = dataList;
 
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function ZeptoProductList({ dataList }) {
 
             <div className="pb-2">
               {authors.map((author) => (
-                <p className="text-[13px] text-[#2c2c2c]  font-bold text-center font-poppins ">
+                <p className="text-[13px] text-[#2c2c2c]  font-bold text-center font-poppins " key={author.name}>
                   {author.name}
                 </p>
               ))}
