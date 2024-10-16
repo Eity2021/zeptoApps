@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WishList from "../../../component/svg/WishList";
+import ColorWishList from "../../../component/svg/ColorWishList";
 
 export default function ZeptoProductList({ dataList }) {
-  // console.log(dataList);
   const { title, authors, formats, id } = dataList;
-
+  const [inWishlist, setInWishlist] = useState(false);
+  const [wishlistCount, setWishlistCount] = useState(0);
+  console.log(wishlistCount);
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  //   if (savedWishlist.includes(id)) {
+  //     setInWishlist(true);
+  //   }
+  // }, [id]);
+
   const handleDetailsPage = (id, dataList) => {
     navigate(`/bookDetails/${id}`, { state: { data: dataList } });
+  };
+
+  const toggleWishlist = () => {
+    // const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    // if (inWishlist) {
+
+    //   const updatedWishlist = savedWishlist.filter((itemId) => itemId !== id);
+    //   localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    //   setWishlistCount(wishlistCount - 1);
+    // } else {
+
+    //   savedWishlist.push(id);
+    //   localStorage.setItem("wishlist", JSON.stringify(savedWishlist));
+    //   setWishlistCount(wishlistCount + 1);
+    // }
+
+    // setInWishlist(!inWishlist); 
   };
 
   return (
@@ -30,7 +58,10 @@ export default function ZeptoProductList({ dataList }) {
 
             <div className="pb-2">
               {authors.map((author) => (
-                <p className="text-[13px] text-[#2c2c2c]  font-bold text-center font-poppins " key={author.name}>
+                <p
+                  className="text-[13px] text-[#2c2c2c]  font-bold text-center font-poppins "
+                  key={author.name}
+                >
                   {author.name}
                 </p>
               ))}
@@ -46,7 +77,12 @@ export default function ZeptoProductList({ dataList }) {
                 </button>
               </div>
               <div>
-                <WishList></WishList>
+                <button onClick={toggleWishlist}>
+                  {inWishlist ? <ColorWishList /> : <WishList />}
+                </button>
+                {/* <p className="text-center text-[12px]">
+                  {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+                </p> */}
               </div>
             </div>
           </div>

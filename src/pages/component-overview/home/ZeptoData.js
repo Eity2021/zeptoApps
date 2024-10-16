@@ -9,7 +9,7 @@ export default function ZeptoData() {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log(zeptoData);
+  // console.log(zeptoData);
   useEffect(() => {
     axios
       .get("https://gutendex.com/books")
