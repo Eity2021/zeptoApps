@@ -1,17 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; 
-
+import { useNavigate } from "react-router-dom";
+import WishList from "../../../component/svg/WishList";
 
 export default function ZeptoProductList({ dataList }) {
   console.log(dataList);
-  const { title, authors, formats,id } = dataList;
+  const { title, authors, formats, id } = dataList;
 
-  const navigate = useNavigate(); 
-  const handleDetailsPage = (id ,dataList) => {
-
+  const navigate = useNavigate();
+  const handleDetailsPage = (id, dataList) => {
     navigate(`/bookDetails/${id}`, { state: { data: dataList } });
-
-  }
+  };
 
   return (
     <div className="relative  py-4 shadow-lg  rounded-md">
@@ -38,9 +36,17 @@ export default function ZeptoProductList({ dataList }) {
               ))}
             </div>
 
-            <div className="flex justify-center">
-              <div className="bg-[#03608b] text-[#fff] w-[140px] text-[13px] mb-4 flex justify-center py-1 rounded-sm">
-              <button onClick={() => handleDetailsPage(id , dataList)}>View Details</button>
+            <div className="flex gap-2 justify-center">
+              <div className="flex justify-center">
+                <button
+                  onClick={() => handleDetailsPage(id, dataList)}
+                  className="bg-[#056DB4] text-[#fff] w-[140px] text-[13px] mb-4 flex justify-center py-1 rounded-sm"
+                >
+                  View Details
+                </button>
+              </div>
+              <div>
+                <WishList></WishList>
               </div>
             </div>
           </div>
