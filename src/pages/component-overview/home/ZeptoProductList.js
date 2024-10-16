@@ -30,7 +30,7 @@ export default function ZeptoProductList({ dataList }) {
 
             <div className="pb-2">
               {authors.map((author) => (
-                <p className="text-[13px]  font-bold text-center font-poppins ">
+                <p className="text-[13px] text-[#2c2c2c]  font-bold text-center font-poppins ">
                   {author.name}
                 </p>
               ))}

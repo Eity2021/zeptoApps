@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ZeptoProductList from "./ZeptoProductList";
+import Search from "../../../component/svg/Search";
 
 export default function ZeptoData() {
   const [zeptoData, setZeptoData] = useState([]);
@@ -23,6 +24,14 @@ export default function ZeptoData() {
 
   return (
     <div className="container">
+     <div className="mt-14 relative">
+     <div className="flex justify-end">
+     <input className="border w-[40%] h-[50px] rounded-none pl-2" placeholder="Search Book" />
+      </div>
+      <div className="absolute right-2 top-3">
+        <Search></Search>
+      </div>
+     </div>
      <div className="mt-24">
      <div className="grid grid-cols-4 gap-4">
         {zeptoData.map((dataList) => (

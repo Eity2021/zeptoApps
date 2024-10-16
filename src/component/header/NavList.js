@@ -17,10 +17,15 @@ export default function NavList() {
         <li className="text-link text-header font-bold">
           <Link to="/contact">CONTACT</Link>
         </li>
-        <li>
+        <li className="relative">
           <div className="pr-8">
           <Link to="/wishlist"><WishList></WishList></Link>  
           </div>
+        <div className="absolute top-3 right-11">
+        <div className="w-4 h-4 border bg-[#fff] flex justify-center items-center rounded-[50%] shadow-lg">
+            <p className="text-[12px]">0</p>
+          </div>
+        </div>
         </li>
       </ul>
 

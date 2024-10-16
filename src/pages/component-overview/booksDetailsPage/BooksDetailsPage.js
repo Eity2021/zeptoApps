@@ -17,7 +17,7 @@ export default function BooksDetailsPage() {
   return (
     <div className="mt-24">
       <div className="container">
-        <div className="grid grid-cols-6 gap-8">
+        <div className="grid grid-cols-5 gap-8">
           <div>
             <img
               src={formats["image/jpeg"]}
@@ -25,7 +25,7 @@ export default function BooksDetailsPage() {
               className="h-[100%] w-[100%]"
             />
           </div>
-          <div className="col-span-3">
+          <div className="col-span-4">
             <div>
               <p className="text-[25px]  font-bold  font-poppins text-[#1B1B1B]">
                 {title}{" "}
