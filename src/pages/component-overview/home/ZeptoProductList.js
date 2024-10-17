@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import WishList from "../../../component/svg/WishList";
 import ColorWishList from "../../../component/svg/ColorWishList";
+import { useAppContextZepto } from "../../../AppContextZepto";
 
 export default function ZeptoProductList({ dataList }) {
+  const { handleWishList, wishList } = useAppContextZepto();
   const { title, authors, formats, id } = dataList;
-  const [inWishlist, setInWishlist] = useState(false);
-  const [wishlistCount, setWishlistCount] = useState(0);
-  console.log(wishlistCount);
+
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -19,24 +19,6 @@ export default function ZeptoProductList({ dataList }) {
 
   const handleDetailsPage = (id, dataList) => {
     navigate(`/bookDetails/${id}`, { state: { data: dataList } });
-  };
-
-  const toggleWishlist = () => {
-    // const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-    // if (inWishlist) {
-
-    //   const updatedWishlist = savedWishlist.filter((itemId) => itemId !== id);
-    //   localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-    //   setWishlistCount(wishlistCount - 1);
-    // } else {
-
-    //   savedWishlist.push(id);
-    //   localStorage.setItem("wishlist", JSON.stringify(savedWishlist));
-    //   setWishlistCount(wishlistCount + 1);
-    // }
-
-    // setInWishlist(!inWishlist); 
   };
 
   return (
@@ -77,8 +59,13 @@ export default function ZeptoProductList({ dataList }) {
                 </button>
               </div>
               <div>
-                <button onClick={toggleWishlist}>
-                  {inWishlist ? <ColorWishList /> : <WishList />}
+                <button onClick={() => handleWishList(dataList)}>
+                  {wishList &&
+                  wishList.some((item) => item.id === dataList.id) ? (
+                    <ColorWishList />
+                  ) : (
+                    <WishList />
+                  )}
                 </button>
                 {/* <p className="text-center text-[12px]">
                   {inWishlist ? "Remove from Wishlist" : "Add to Wishlist"}

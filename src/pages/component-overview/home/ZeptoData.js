@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
+
 import ZeptoProductList from "./ZeptoProductList";
 import Search from "../../../component/svg/Search";
+import { useAppContextZepto } from "../../../AppContextZepto";
+
 
 export default function ZeptoData() {
-  const [zeptoData, setZeptoData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
+
+  const { zeptoData,filteredData,setFilteredData } = useAppContextZepto();
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
   // console.log(zeptoData);
-  useEffect(() => {
-    axios
-      .get("https://gutendex.com/books")
-      .then((response) => {
-        setZeptoData(response.data.results);
-        setFilteredData(response.data.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
+
+
 
   const handleSearch = (event) => {
     const value = event.target.value.toLowerCase();

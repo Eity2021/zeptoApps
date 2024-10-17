@@ -1,9 +1,12 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import WishList from "../../../component/svg/WishList";
+import ColorWishList from "../../../component/svg/ColorWishList";
+import { useAppContextZepto } from "../../../AppContextZepto";
 export default function BooksDetailsPage() {
   const location = useLocation();
   const { data } = location.state;
+  const {handleWishList,wishList } = useAppContextZepto();
   const {
     formats,
     title,
@@ -13,7 +16,7 @@ export default function BooksDetailsPage() {
     languages,
     bookshelves,
   } = data;
-  console.log(data);
+
   return (
     <div className="my-24">
       <div className="container">
@@ -64,7 +67,9 @@ export default function BooksDetailsPage() {
                 ))}
               </div>
               <div className="flex gap-1 pt-3 cursor-pointer">
-                <WishList></WishList>
+              <button onClick={() =>handleWishList(data)}>
+                  {wishList && wishList.some((item) => item.id === data.id) ? <ColorWishList /> : <WishList />}
+                </button>
                 <h2 className="text-[16px] font-medium text-[#056DB4] font-poppins">
                   Wishlist
                 </h2>

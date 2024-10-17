@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import WishList from "../svg/ColorWishList";
+import { useAppContextZepto } from "../../AppContextZepto";
 
 export default function NavList() {
+  const { wishList } = useAppContextZepto();
   return (
     <div className="flex ">
       <ul className="hidden md:flex gap-8">
@@ -23,7 +25,7 @@ export default function NavList() {
           </div>
         <div className="absolute top-3 right-11">
         <div className="w-4 h-4 border bg-[#fff] flex justify-center items-center rounded-[50%] shadow-lg">
-            <p className="text-[12px]">0</p>
+            <p className="text-[12px]">{wishList.length}</p>
           </div>
         </div>
         </li>
